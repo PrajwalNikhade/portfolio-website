@@ -1,23 +1,24 @@
 import React from "react";
+import Link from "next/link";
 
 const Main = () => {
 	return (
 		<div>
 			<div
-				className="main-header flex flex-row h-8
+				className="main-header flex md:flex-row flex-col h-10
             ">
 				<div
 					className="header-left flex  items-center
-                bg-[#F9FAFF] justify-around w-1/2 text-center">
-					<p className="text-center text-black text-lg">Prajwal</p>
+                bg-[#F9FAFF] justify-around md:w-1/2 w-full text-center">
+					<Link href="/" className="text-center text-black text-lg">Prajwal Nikhade</Link>
 				</div>
 
 				<div
 					className="header-right flex flex-row items-center
-             justify-around w-1/2 bg-[#FDC435] text-lg text-black ">
-					<p>About</p>
-					<p>Projects</p>
-					<p>Contact</p>
+             justify-around md:w-1/2 w-full bg-[#FDC435] text-lg text-black ">
+					<Link href="/about">About</Link>
+					<Link href="/projects">Projects</Link>
+					<Link href="/contact">Contact</Link>
 				</div>
 			</div>
 		</div>

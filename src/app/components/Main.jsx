@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Main = () => {
 	return (
@@ -15,12 +16,12 @@ const Main = () => {
 						Next.js
 					</p>
 					<div className="buttons">
-						<button className="border-2 hover:border-0 rounded-2xl p-3 my-4 mr-10  hover:bg-[#FDC435] hover:decoration-1 hover:decoration-black">
+						<Link href="https://linkedin.com" target="_blank" className="border-2 hover:border-0 rounded-2xl p-3 my-4 mr-10 inline-block hover:bg-[#FDC435] hover:decoration-1 hover:decoration-black">
 							Linkedin
-						</button>
-						<button className="border-2 hover:border-0 rounded-2xl p-3 my-4 mr-10 hover:bg-[#FDC435] hover:decoration-1 hover:decoration-black">
+						</Link>
+						<Link href="https://github.com" target="_blank" className="border-2 hover:border-0 rounded-2xl p-3 my-4 mr-10 inline-block hover:bg-[#FDC435] hover:decoration-1 hover:decoration-black">
 							Github
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

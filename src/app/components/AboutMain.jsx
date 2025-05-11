@@ -3,10 +3,10 @@ import Button from "./Button";
 
 const AboutMain = () => {
   return (
-    <div className="main_about flex  ">
-      <div className="left w-2/3">
-        <h1 className="font-bold text-2xl mx-20 my-5">About Me </h1>
-        <p className="text-wrap  mx-20 ">
+    <div className="main_about flex flex-col md:flex-row mt-5 ">
+      <div className="left md:w-2/3 w-full">
+        <h1 className="font-bold  md:mx-20 mx-30 my-2 md:my-5  underline decoration-[#FDC435] text-2xl ">About Me </h1>
+        <p className="text-wrap m-3 md:mx-20 ">
           I am a Full Stack Web Developer .I build full stack web apps using the
           MERN stack and Next.js. From designing responsive front-ends to
           setting up solid back-end APIs, I enjoy turning2 ideas into real,
@@ -19,11 +19,11 @@ const AboutMain = () => {
           rel="noopener noreferrer"
         >
 
-        <Button className="mx-20 mt-4">Resume</Button>
+        <Button className="md:mx-20 mx-6 md:mt-4" >Resume</Button>
         </a>
       </div>
       <div className="right w-1/3 ">
-        <div className="circle rounded-full bg-[#fdc435] h-64 w-64 m-5 flex items-center justify-center">
+        <div className="circle rounded-full bg-[#fdc435] h-64 w-64 md:m-5 mx-12 my-3 flex items-center justify-center">
 
           {/* <span className="text-white font-bold">Your Photo</span> */}
         </div>
