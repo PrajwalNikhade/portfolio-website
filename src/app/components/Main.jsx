@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-
+import Button from "./Button";
 const Main = () => {
 	return (
-		<div className="main  flex flex-row">
-			<div className="left flex  flex-col  w-1/2 bg-[#F9FAFF] text-black">
+		<div className="main  flex md:flex-row flex-col">
+			<div className="left flex  flex-col  w-full md:w-1/2 bg-[#F9FAFF] text-black">
 				<div className="m-auto w-2/3">
 					<h1 className="text-3xl font-bold flex my-10 ">
 						Hello my name is
@@ -15,13 +15,17 @@ const Main = () => {
 						I am a Full Stack Web Developer with knowledge in MERN Stack and
 						Next.js
 					</p>
-					<div className="buttons">
-						<Link href="https://linkedin.com" target="_blank" className="border-2 hover:border-0 rounded-2xl p-3 my-4 mr-10 inline-block hover:bg-[#FDC435] hover:decoration-1 hover:decoration-black">
+					<div className="">
+						<Button>
+							<Link href="https://linkedin.com" target="_blank" >
 							Linkedin
 						</Link>
-						<Link href="https://github.com" target="_blank" className="border-2 hover:border-0 rounded-2xl p-3 my-4 mr-10 inline-block hover:bg-[#FDC435] hover:decoration-1 hover:decoration-black">
+						</Button>
+						<Button>
+						<Link href="https://github.com" target="_blank" >
 							Github
 						</Link>
+						</Button>
 					</div>
 				</div>
 			</div>

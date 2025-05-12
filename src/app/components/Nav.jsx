@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const Main = () => {
 	return (
-		<div>
+		<>
 			<div
-				className="main-header flex md:flex-row flex-col h-10
+				className="main-header flex md:flex-row flex-col h-full
             ">
 				<div
 					className="header-left flex  items-center
@@ -21,7 +21,7 @@ const Main = () => {
 					<Link href="/contact">Contact</Link>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
