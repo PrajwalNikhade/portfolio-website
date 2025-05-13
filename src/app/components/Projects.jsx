@@ -4,7 +4,7 @@ import Project_card2 from "./Project_card2";
 
 const Projects = () => {
 	return (
-		<div className="flex flex-col gap-15 mb-15">
+		<div className="flex flex-col gap-15 mb-15 h-full ">
 			<h1 className="flex justify-center text-4xl my-5 font-bold underline decoration-[#FDC435] mx-auto ">Projects</h1>
 			<Project_card1
 				project_name="project1"

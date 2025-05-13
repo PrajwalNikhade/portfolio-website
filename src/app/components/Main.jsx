@@ -15,7 +15,7 @@ const Main = () => {
 						I am a Full Stack Web Developer with knowledge in MERN Stack and
 						Next.js
 					</p>
-					<div className="">
+					<div className=" gap-6 flex my-6 ">
 						<Button>
 							<Link href="https://linkedin.com" target="_blank" >
 							Linkedin
@@ -29,7 +29,7 @@ const Main = () => {
 					</div>
 				</div>
 			</div>
-			<div className="right bg-[#FDC435] w-1/2">wrfr</div>
+			<div className="right bg-[#FDC435] md:w-1/2 w-full">wrfr</div>
 		</div>
 	);
 };

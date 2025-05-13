@@ -1,0 +1,33 @@
+<svg width="1920" height="300" viewBox="0 0 1920 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with light gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F9FAFF" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="1920" height="300" fill="url(#bg-gradient)" />
+  
+  <!-- Decorative elements -->
+  <rect x="0" y="270" width="1920" height="30" fill="#FDC435" />
+  
+  <!-- Accent shapes -->
+  <circle cx="200" cy="150" r="80" fill="#FDC435" opacity="0.2" />
+  <circle cx="1720" cy="100" r="60" fill="#FDC435" opacity="0.3" />
+  
+  <!-- Code-like decorative elements -->
+  <rect x="400" y="80" width="120" height="20" rx="5" fill="#FDC435" opacity="0.7" />
+  <rect x="400" y="110" width="180" height="20" rx="5" fill="#FDC435" opacity="0.5" />
+  <rect x="400" y="140" width="150" height="20" rx="5" fill="#FDC435" opacity="0.7" />
+  <rect x="400" y="170" width="200" height="20" rx="5" fill="#FDC435" opacity="0.5" />
+  
+  <!-- Project icons -->
+  <rect x="1200" y="100" width="80" height="80" rx="10" fill="#FDC435" opacity="0.8" />
+  <rect x="1300" y="100" width="80" height="80" rx="10" fill="#FDC435" opacity="0.6" />
+  <rect x="1400" y="100" width="80" height="80" rx="10" fill="#FDC435" opacity="0.4" />
+  
+  <!-- Title text -->
+  <text x="960" y="160" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#171717">My Projects</text>
+</svg>
