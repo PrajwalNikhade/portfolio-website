@@ -30,7 +30,7 @@ const Skills = () => {
               <div className="w-16 h-16 relative mb-3">
                 <Image 
                   src={skill.logo}
-                  alt={`${skill.name} logo`}
+                  alt={`${skill.name} programming language/technology logo`}
                   fill
                   style={{ objectFit: 'contain' }}
                 />

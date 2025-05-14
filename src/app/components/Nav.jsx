@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Main = () => {
+const Nav = () => {
 	return (
 		<>
 			<div
@@ -25,4 +25,4 @@ const Main = () => {
 	);
 };
 
-export default Main;
+export default Nav;

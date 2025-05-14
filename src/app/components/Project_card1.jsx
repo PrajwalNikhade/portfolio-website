@@ -16,11 +16,11 @@ const Project_card1 = (props) => {
 			<div className="right md:w-1/2">
 				<Image
 					src={props.project_img}
-					alt={`project image ${props.project_name}`}
+					alt={`Screenshot of ${props.project_name} - ${props.project_description.substring(0, 50)}${props.project_description.length > 50 ? '...' : ''}`}
 					height={250}
 					width={300}
 					className="w-full h-full rounded-4xl"
-					/>
+				/>
 			</div>
 		</div>
 	);

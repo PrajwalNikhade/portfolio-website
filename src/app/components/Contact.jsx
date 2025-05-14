@@ -1,12 +1,15 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Button from './Button'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ToastContainer, toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
+  const form = useRef();
+  
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -38,7 +41,7 @@ const Contact = () => {
     }
   }
   
-  // Validate form - MOVED INSIDE THE COMPONENT
+  // Validate form
   const validateForm = () => {
     let valid = true
     const newErrors = { name: '', email: '', message: '' }
@@ -67,33 +70,13 @@ const Contact = () => {
   }
   
   const handleSubmit = (e) => {
-    e.preventDefault()
+
+    // Don't prevent default if you want the form to submit naturally to FormSubmit
+    // e.preventDefault()
     
-    // Validate form before submission
-    if (validateForm()) {
-      // Form is valid, proceed with submission
-      toast.success("Message sent successfully!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Slide,
-      })
-      
-      // Reset form after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      })
-      
-      // You can add your form submission logic here
-      // For example, send data to an API
-    } else {
+    // Just validate the form
+    if (!validateForm()) {
+      e.preventDefault(); // Only prevent default if validation fails
       // Form has errors
       toast.error("Please fill correct information ", {
         position: "top-center",
@@ -109,18 +92,14 @@ const Contact = () => {
     }
   }
 
-  const handleKeyDown = ( e ) => {
-    if ( e.key === 'Enter' ) {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
       e.preventDefault();
       const form = e.target.form;
       const index = [...form].indexOf(e.target);
       form.elements[index + 1]?.focus();
     }
   }
-
-  // Remove this function as it's not being used correctly and causes errors
-  // The submit_button function references 'input' which doesn't exist
-  // and it's redundant with handleSubmit
   
   return (
     <>  
@@ -129,9 +108,13 @@ const Contact = () => {
         <p className='text-2xl'>Feel free to contact</p>
       </div>
       <div className='border-2 border-[#FDC435] md:w-fit w-[90%] mx-auto mb-10 mt-5 p-10 rounded-2xl'>
-        <form onSubmit={handleSubmit} className='flex flex-col justify-center'>
-          <input type="hidden" name="_captcha" value="false"/>
+        <form ref={form} onSubmit={handleSubmit} className='flex flex-col justify-center' action={process.env.NEXT_PUBLIC_FORM_SUBMIT_ID} method='POST'>
+          {/* Hidden FormSubmit fields */}
+          <input type="hidden" name="_subject" value="New contact form submission" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="./thankyou" />
           
+          {/* Your existing form fields */}
           <p className='text-lg mx-2'>Name</p>
           <input 
             type="text" 
@@ -176,13 +159,13 @@ const Contact = () => {
       <h4 className='font-bold underline decoration-[#FDC435] text-3xl my-2'>Other ways to contact</h4>
       <div className="flex flex-row gap-3"> 
             <Link href="https://linkedin.com" target="_blank">
-              <Image src="/bi_linkedin.svg" alt="linkedin" width={50} height={50} className='hover:scale-110'/>
+              <Image src="/bi_linkedin.svg" alt="Connect with me on LinkedIn" width={50} height={50} className='hover:scale-110'/>
             </Link>
             <Link href="mailto:your-email@example.com">
-              <Image src="/bi_envelope-fill.svg" alt="gmail" width={50} height={50} className='hover:scale-110'/>
+              <Image src="/bi_envelope-fill.svg" alt="Send me an email" width={50} height={50} className='hover:scale-110'/>
             </Link>
             <Link href="https://github.com" target="_blank">
-              <Image src="/icons8-github.svg" alt="github" width={50} height={50} className='hover:scale-110'/>
+              <Image src="/icons8-github.svg" alt="View my projects on GitHub" width={50} height={50} className='hover:scale-110'/>
             </Link>
       </div>
         </div>
