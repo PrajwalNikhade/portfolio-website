@@ -12,13 +12,13 @@ const Footer = () => {
         </div>
         <div className="logos flex flex-row gap-2 justify-center items-center my-2 md:my-auto">
            <Link href={"https://linkedin.com/in/prajwalnikhade"} target='_blank' rel="noopener noreferrer">
-           <Image src="/bi_linkedin.svg" alt="linkedin"  width={40} height={40} className="md:w-[50px] md:h-[50px] hover:scale-125"/>
+           <Image loading='lazy' src="/bi_linkedin.svg" alt="linkedin"  width={40} height={40} className="md:w-[50px] md:h-[50px] hover:scale-125"/>
            </Link>
            <Link href={"mailto:prajwalnikhade09@gmail.com"} target='_blank' rel="noopener noreferrer">
-           <Image src="/bi_envelope-fill.svg" alt="gmail"  width={40} height={40} className="md:w-[50px] md:h-[50px] hover:scale-125"/>
+           <Image loading='lazy' src="/bi_envelope-fill.svg" alt="gmail"  width={40} height={40} className="md:w-[50px] md:h-[50px] hover:scale-125"/>
            </Link>
            <Link href={"https://github.com/PrajwalNikhade"} target='_blank' rel="noopener noreferrer">
-           <Image src="/icons8-github.svg" alt="github"  width={40} height={40} className="md:w-[50px] md:h-[50px] hover:scale-125"/>
+           <Image loading='lazy' src="/icons8-github.svg" alt="github"  width={40} height={40} className="md:w-[50px] md:h-[50px] hover:scale-125"/>
            </Link>
         </div>
     </footer>

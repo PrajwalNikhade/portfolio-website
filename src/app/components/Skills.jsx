@@ -29,6 +29,7 @@ const Skills = () => {
             <div key={index} className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 relative mb-3">
                 <Image 
+                loading='lazy'
                   src={skill.logo}
                   alt={`${skill.name} programming language/technology logo`}
                   fill

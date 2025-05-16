@@ -9,7 +9,7 @@ const AboutMain = () => {
         <p className="text-wrap m-3 md:mx-20 ">
           I am a Full Stack Web Developer .I build full stack web apps using the
           MERN stack and Next.js. From designing responsive front-ends to
-          setting up solid back-end APIs, I enjoy turning to ideas into real,
+          setting up solid back-end APIs, I enjoy turning2 ideas into real,
           working products. I'm always learning new tools, writing clean code,
           and looking for ways to make the web faster and better. Take a look
           around and feel free to reach out!
