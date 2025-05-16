@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const AboutMain = () => {
   return (
-    <div className="main_about flex flex-col md:flex-row mt-5 ">
+    <div className="main_about flex flex-col md:flex-row  ">
       <div className="left md:w-2/3 w-full">
         <h1 className="font-bold  md:mx-20 mx-30 my-2 md:my-5  underline decoration-[#FDC435] text-2xl ">About Me </h1>
         <p className="text-wrap m-3 md:mx-20 ">

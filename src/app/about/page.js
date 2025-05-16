@@ -3,7 +3,8 @@ import AboutMain from '../components/AboutMain'
 import Skills from '../components/Skills' 
 const about = () => {
   return (
-    <div>
+    <div className='text-black bg-white
+    '>
       <AboutMain/>
       <Skills/>
       

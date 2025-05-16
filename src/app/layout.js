@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import ThemeDetector from "./components/ThemeDetector";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,8 +23,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="text-black bg-[#f9faff]">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-black`}
       >
+        <ThemeDetector />
         <Nav className=''/>
         <hr className="bg-black h-0.5" />
         {children}

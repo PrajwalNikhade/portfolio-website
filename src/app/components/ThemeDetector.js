@@ -1,32 +1,23 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import Projects from '../components/Projects'
-import Image from 'next/image'
+import { useEffect } from 'react'
 
-const Page = () => {
-  const [isWhiteBackground, setIsWhiteBackground] = useState(false);
-  
+export default function ThemeDetector() {
   useEffect(() => {
     // Function to detect if browser is using dark theme
     const detectDarkTheme = () => {
       try {
         // Check if browser supports prefers-color-scheme media query
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          // User has dark theme enabled, set background to white
-          setIsWhiteBackground(true);
-          // Apply white background directly to body for Chrome
-          document.body.style.backgroundColor = 'white';
+          // User has dark theme enabled, set background to #f9faff
+          document.documentElement.classList.add('dark-theme');
+          document.body.style.backgroundColor = '#f9faff';
         } else {
           // User has light theme, keep background as is
-          setIsWhiteBackground(false);
-          // Reset background color
+          document.documentElement.classList.remove('dark-theme');
           document.body.style.backgroundColor = '';
         }
       } catch (error) {
         console.error('Error detecting color scheme:', error);
-        // Fallback to white background if there's an error
-        setIsWhiteBackground(true);
-        document.body.style.backgroundColor = 'white';
       }
     };
     
@@ -37,7 +28,6 @@ const Page = () => {
     const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
     // Use the appropriate event listener method based on browser support
-    // Modern browsers use addEventListener, older ones use addListener
     if (darkThemeMediaQuery.addEventListener) {
       darkThemeMediaQuery.addEventListener('change', detectDarkTheme);
     } else if (darkThemeMediaQuery.addListener) {
@@ -52,19 +42,9 @@ const Page = () => {
       } else if (darkThemeMediaQuery.removeListener) {
         darkThemeMediaQuery.removeListener(detectDarkTheme);
       }
-      // Reset background color on unmount
-      document.body.style.backgroundColor = '';
     };
   }, []);
   
-  return (
-    <div style={{ backgroundColor: isWhiteBackground ? 'white' : 'transparent', width: '100%' }}>
-      <Image className='w-full '
-      loading='lazy'
-      src="./projects-banner.svg" alt="projects-banner" width={100} height={100}/>
-      <Projects style={{ backgroundColor: isWhiteBackground ? 'white' : 'transparent' }}/>
-    </div>
-  )
+  // This component doesn't render anything visible
+  return null;
 }
-
-export default Page
