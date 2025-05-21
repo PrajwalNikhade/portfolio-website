@@ -6,16 +6,34 @@ import { useState, useEffect } from 'react'
 
 const Home_Skills = () => {
   const [isHovering, setIsHovering] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const controls = useAnimationControls()
+  
+  // Check if device is mobile on component mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    // Initial check
+    checkMobile()
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile)
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   
   // Effect to control animation based on hover state
   useEffect(() => {
-    if (isHovering) {
+    if (isHovering && !isMobile) {
       controls.stop()
     } else {
       controls.start({ x: "-50%" })
+      // controls.stop()
     }
-  }, [isHovering, controls])
+  }, [isHovering, controls, isMobile])
   
   // Define skills array directly in this component
   const skills = [
@@ -48,15 +66,17 @@ const Home_Skills = () => {
       <div className="container mx-auto overflow-hidden">
         <div 
           className="flex"
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
+          onMouseEnter={() => !isMobile && setIsHovering(true)}
+          onMouseLeave={() => !isMobile && setIsHovering(false)}
+          onTouchStart={() => isMobile && setIsHovering(true)}
+          onTouchEnd={() => isMobile && setIsHovering(false)}
         >
           <motion.div 
             className="flex flex-row gap-6 px-4 mx-3"
             initial={{ x: "0%" }}
             animate={controls}
             transition={{
-              duration: 15,
+              duration: isMobile ? 20 : 15, // Slower on mobile for better performance
               repeat: Infinity,
               repeatType: "loop",
               ease: "linear"
