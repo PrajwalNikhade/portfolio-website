@@ -31,7 +31,7 @@ const Skills = () => {
                 <Image 
                 loading='lazy'
                   src={skill.logo}
-                  alt={`${skill.name} programming language/technology logo`}
+                  alt={`${skill.name}  logo`}
                   fill
                   style={{ objectFit: 'contain' }}
                 />

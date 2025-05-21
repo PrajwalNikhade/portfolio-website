@@ -17,12 +17,12 @@ const Main = () => {
 					</p>
 					<div className="gap-2 flex">
 						<Button>
-							<Link href="https://linkedin.com" target="_blank" >
+							<Link href="https://linkedin.com/in/prajwalnikhade" target="_blank" rel="noopener noreferrer">
 							Linkedin
 						</Link>
 						</Button>
 						<Button>
-						<Link href="https://github.com" target="_blank" >
+						<Link href="https://github.com/PrajwalNikhade" target="_blank" rel="noopener noreferrer">
 							Github
 						</Link>
 						</Button>

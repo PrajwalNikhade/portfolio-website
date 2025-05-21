@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ToastContainer, toast, Slide } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ThemeDetector from './ThemeDetector'
 const Contact = () => {
   const handlesubmit=(e)=>{
     e.preventDefault();
@@ -37,7 +38,9 @@ const Contact = () => {
     });
   }
   return (
-<>  <div className="tx flex flex-col justify-center items-center m-3 gap-3 ">
+<>  
+<ThemeDetector/>
+  <div className="tx flex flex-col justify-center items-center m-3 gap-3 ">
   <h2 className='text-5xl font-bold underline decoration-[#FDC435] '>Contact</h2>
   <p className='text-2xl   '>Feel free to contact</p>
 </div>
@@ -60,13 +63,13 @@ const Contact = () => {
     
       <h4 className='font-bold underline decoration-[#FDC435] text-3xl my-2'>Other ways to contact</h4>
       <div className="flex flex-row gap-3"> 
-            <Link href="https://linkedin.com" target="_blank">
+            <Link href="https://linkedin.com/in/prajwalnikhade" target="_blank" rel="noopener noreferrer">
               <Image loading='lazy' src="/bi_linkedin.svg" alt="Connect with me on LinkedIn" width={50} height={50} className='hover:scale-110'/>
             </Link>
-            <Link href="mailto:your-email@example.com">
+            <Link href="mailto:prajwalnikhade09@gmail.com" target="_blank" rel="noopener noreferrer">
               <Image loading='lazy' src="/bi_envelope-fill.svg" alt="Send me an email" width={50} height={50} className='hover:scale-110'/>
             </Link>
-            <Link href="https://github.com" target="_blank">
+            <Link href="https://github.com/PrajwalNikhade" target="_blank" rel="noopener noreferrer">
               <Image loading='lazy' src="/icons8-github.svg" alt="View my projects on GitHub" width={50} height={50} className='hover:scale-110'/>
             </Link>
       </div>
