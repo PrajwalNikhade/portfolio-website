@@ -1,11 +1,14 @@
+"use client"
 import React from "react";
 import Link from "next/link";
 import Button from "./Button";
+import { motion } from "framer-motion";
+import Image from "next/image";
 const Main = () => {
 	return (
 		<div className="main  flex md:flex-row flex-col md:gap-0 gap-2">
 			<div className="left flex  flex-col  w-full md:w-1/2 bg-[#F9FAFF] text-black">
-				<div className="m-auto w-2/3">
+				<motion.div className="m-auto w-2/3" initial={{x:-100,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:0.5}}>
 					<h1 className="text-3xl font-bold flex my-10 ">
 						Hello my name is
 						<br className="m-1" />
@@ -27,10 +30,15 @@ const Main = () => {
 						</Link>
 						</Button>
 					</div>
-				</div>
+				</motion.div>
 		
 			</div>
-			<div className="right bg-[#FDC435] md:w-1/2 w-full ">wrfr</div>
+			<div className="right bg-[#FDC435] md:w-1/2 w-full ">
+			<motion.div  initial={{x:100,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:0.5,delay:0.2}}>
+
+			<Image src={"/vercel.svg"} width={100} height={100} alt="vercel"   />
+			</motion.div>
+			</div>
 		</div>
 	);
 };
