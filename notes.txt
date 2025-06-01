@@ -1,9 +1,2 @@
-## 2. SEO Improvements
-- Update the metadata in layout.js with your actual information instead of the default "Create Next App":
 
-## 3. Add a Skills Section to the Homepage
-- You already have a Skills component, but it's only used on the About page. Consider adding it to your homepage as well.
-
-
-add animations 
 

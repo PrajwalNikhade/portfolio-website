@@ -36,7 +36,7 @@ const Main = () => {
 			<div className="right bg-[#FDC435] md:w-1/2 w-full ">
 			<motion.div  initial={{x:100,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:0.5,delay:0.2}}>
 
-			<Image src={"/vercel.svg"} width={100} height={100} alt="vercel"   />
+			<Image src={"/vercel.svg"} width={100} height={100} alt="vercel" priority />
 			</motion.div>
 			</div>
 		</div>

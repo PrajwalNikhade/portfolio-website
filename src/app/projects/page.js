@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react'
 import Projects from '../components/Projects'
 import Image from 'next/image'
+import SEO from '../components/SEO'
 
 const Page = () => {
   const [isWhiteBackground, setIsWhiteBackground] = useState(false);
-  
+
   useEffect(() => {
     // Function to detect if browser is using dark theme
     const detectDarkTheme = () => {
@@ -29,13 +30,13 @@ const Page = () => {
         document.body.style.backgroundColor = 'white';
       }
     };
-    
+
     // Call the function initially
     detectDarkTheme();
-    
+
     // Set up listener for theme changes
     const darkThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     // Use the appropriate event listener method based on browser support
     // Modern browsers use addEventListener, older ones use addListener
     if (darkThemeMediaQuery.addEventListener) {
@@ -44,7 +45,7 @@ const Page = () => {
       // For older browsers including some versions of Chrome
       darkThemeMediaQuery.addListener(detectDarkTheme);
     }
-    
+
     // Clean up listener on component unmount
     return () => {
       if (darkThemeMediaQuery.removeEventListener) {
@@ -56,14 +57,17 @@ const Page = () => {
       document.body.style.backgroundColor = '';
     };
   }, []);
-  
+
   return (
-    <div style={{ backgroundColor: isWhiteBackground ? 'white' : 'transparent', width: '100%' }}>
-      <Image className='w-full '
-      loading='lazy'
-      src="./projects-banner.svg" alt="projects-banner" width={100} height={100}/>
-      <Projects style={{ backgroundColor: isWhiteBackground ? 'white' : 'transparent' }}/>
-    </div>
+    <>
+      <SEO title={"Projects-Prajwal Nikhade"} />
+      <div style={{ backgroundColor: isWhiteBackground ? 'white' : 'transparent', width: '100%' }}>
+        <Image className='w-full '
+          loading='lazy'
+          src="./projects-banner.svg" alt="projects-banner" width={100} height={100} />
+        <Projects style={{ backgroundColor: isWhiteBackground ? 'white' : 'transparent' }} />
+      </div>
+    </>
   )
 }
 

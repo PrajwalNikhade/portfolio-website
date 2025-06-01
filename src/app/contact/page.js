@@ -1,10 +1,14 @@
 import React from 'react'
 import Contact from '@/app/components/Contact'
+import SEO from '../components/SEO'
 const page = () => {
   return (
-    <div className='w-screen'>
-      <Contact/>
-    </div>
+    <>
+      <SEO title={"Contact-Prajwal Nikhade"} />
+      <div className='w-screen'>
+        <Contact />
+      </div>
+    </>
   )
 }
 

@@ -1,39 +1,41 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
-import ThemeDetector from "./ThemeDetector";
 
 const Contact = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, email, message } = e.target;
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+  const handleSubmit = (e) => {
+    const form = e.target;
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      e.preventDefault(); // stop form from submitting
       toast.error("Please fill out all fields.", {
         position: "top-center",
         theme: "light",
         transition: Slide,
       });
-      return; // prevent submission
+      return;
     }
 
-    // Show success and manually submit
-    toast.success("Message sent successfully!", {
+    // allow form to submit, but show toast
+    toast.success("Sending message...", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 2000,
       theme: "light",
       transition: Slide,
     });
 
-    // Slight delay so toast appears before redirect (optional)
-    setTimeout(() => {
-      e.target.submit();
-    }, 500);
+    setIsSubmitting(true);
   };
 
   const handleKeyDown = (e) => {
@@ -47,14 +49,14 @@ const Contact = () => {
 
   return (
     <>
-      <ThemeDetector />
       <motion.div
         className="tx flex flex-col justify-center items-center m-3 gap-3"
         initial={{ y: -100, opacity: 0 }}
-        transition={{ duration: 0.5 }}
         whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
       >
-        <h2 className="text-5xl font-bold underline decoration-[#FDC435]">
+        <h2 className="text-5xl font-bold underline decoration-[#FDC435]" id="contact-heading">
           Contact
         </h2>
         <p className="text-2xl">Feel free to contact</p>
@@ -66,38 +68,56 @@ const Contact = () => {
           action={`https://formsubmit.co/${process.env.NEXT_PUBLIC_FORM_SUBMIT_ID}`}
           method="POST"
           className="flex flex-col justify-center"
+          aria-labelledby="contact-heading"
         >
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="http://localhost:3000/thankyou" />
 
-          <p className="text-lg mx-2">Name</p>
+          <label className="text-lg mx-2" htmlFor="name">
+            Name
+          </label>
           <input
+            id="name"
             type="text"
             name="name"
             placeholder="Enter Your Name"
+            required
+            autoComplete="name"
             onKeyDown={handleKeyDown}
             className="my-2 border-2 bg-[#F9FAFF] border-[#FDC435] p-2"
+            aria-required="true"
           />
 
-          <p className="text-lg mx-2">Email</p>
+          <label className="text-lg mx-2" htmlFor="email">
+            Email
+          </label>
           <input
+            id="email"
             type="email"
             name="email"
             placeholder="Enter Your Email"
+            required
+            autoComplete="email"
             onKeyDown={handleKeyDown}
             className="my-2 border-2 bg-[#F9FAFF] border-[#FDC435] p-2"
+            aria-required="true"
           />
 
-          <p className="text-lg mx-2">Message</p>
+          <label className="text-lg mx-2" htmlFor="message">
+            Message
+          </label>
           <textarea
+            id="message"
             name="message"
             placeholder="Enter Your Message"
+            required
             onKeyDown={handleKeyDown}
             className="my-2 border-2 bg-[#F9FAFF] border-[#FDC435] p-2 h-32 resize-none"
+            aria-required="true"
           />
 
-          <Button className={"m-5 p-3"} type="submit">
-            Send
+          <Button className="m-5 p-3" type="submit" disabled={isSubmitting} aria-busy={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send"}
           </Button>
         </form>
       </div>
@@ -106,53 +126,21 @@ const Contact = () => {
         <motion.h4
           className="font-bold underline decoration-[#FDC435] text-3xl my-2"
           initial={{ x: -100, opacity: 0 }}
-          transition={{ duration: 0.5 }}
           whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
           Other ways to contact
         </motion.h4>
         <div className="flex flex-row gap-3">
-          <Link
-            href="https://linkedin.com/in/prajwalnikhade"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              loading="lazy"
-              src="/bi_linkedin.svg"
-              alt="Connect with me on LinkedIn"
-              width={50}
-              height={50}
-              className="hover:scale-110"
-            />
+          <Link href="https://linkedin.com/in/prajwalnikhade" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <Image src="/bi_linkedin.svg" alt="LinkedIn icon" width={50} height={50} />
           </Link>
-          <Link
-            href="mailto:prajwalnikhade09@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              loading="lazy"
-              src="/bi_envelope-fill.svg"
-              alt="Send me an email"
-              width={50}
-              height={50}
-              className="hover:scale-110"
-            />
+          <Link href="mailto:prajwalnikhade09@gmail.com" target="_blank" rel="noopener noreferrer" title="Email">
+            <Image src="/bi_envelope-fill.svg" alt="Email icon" width={50} height={50} />
           </Link>
-          <Link
-            href="https://github.com/PrajwalNikhade"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              loading="lazy"
-              src="/icons8-github.svg"
-              alt="View my projects on GitHub"
-              width={50}
-              height={50}
-              className="hover:scale-110"
-            />
+          <Link href="https://github.com/PrajwalNikhade" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <Image src="/icons8-github.svg" alt="GitHub icon" width={50} height={50} />
           </Link>
         </div>
       </div>

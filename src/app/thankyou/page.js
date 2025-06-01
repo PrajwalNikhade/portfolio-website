@@ -4,9 +4,11 @@ import Image from 'next/image'
 import Button from '../components/Button'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import SEO from '../components/SEO'
 const thankyou = () => {
   return (
     <>
+      <SEO title={"Prajwal Nikhade - Form Submitted Successfully"} />
       <div className="bg-[#F9FAFF] h-screen ">
         <div className='main flex flex-col justify-center items-center mt-20 gap-4'>
           <motion.div className='img' initial={{ y: -100, opacity: 0 }} transition={{ duration: 1 }} whileInView={{ opacity: 1, y: 0 }}>
