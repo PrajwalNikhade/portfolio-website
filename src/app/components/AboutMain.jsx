@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Button from "./Button";
+
 import { motion } from "framer-motion";
 
 const AboutMain = () => {
@@ -24,6 +25,7 @@ const AboutMain = () => {
         <a href="/files/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
+         
         >
 
         <Button className="md:mx-20 mx-6 md:mt-4" >Resume</Button>
